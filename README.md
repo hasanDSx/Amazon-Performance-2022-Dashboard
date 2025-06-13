@@ -5,6 +5,7 @@
 An interactive dashboard analyzing the impact of Sales and Orders on Amazon Performance. It highlights key metrics such as total sales and Orders and Quantity, Promotion usage rate, and detailed sales breakdowns by demographics, Size, channels, Service Levele and product categories.
 
 
+
 📌 Analysis Steps:
 
 •	Explored and understood the raw dataset to identify its structure and insights.
@@ -14,7 +15,9 @@ An interactive dashboard analyzing the impact of Sales and Orders on Amazon Perf
 •	Designed a dynamic Power BI dashboard for visualizing insights effectively.
 
 
+
 📌 Key Metrics:
+
 •	Total Sales: $78.59M
 
 •	Total Orders: 120K
@@ -25,13 +28,17 @@ An interactive dashboard analyzing the impact of Sales and Orders on Amazon Perf
 
 
 📌 Key Insights:
+
 🔹 Promotion Performance:
+
   - Most orders use promotion.
     
 🔹 Sales Analysis:
+
   - Sales profits decreased this month compared to last month.
 
 🔹 Orders Performance:
+
   - Orders decreased this month compared to last month.
 
 📌 Services Level Results:
