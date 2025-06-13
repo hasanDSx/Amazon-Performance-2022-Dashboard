@@ -2,7 +2,7 @@
 
 📌 Description:
 
-An interactive dashboard analyzing the impact of Sales and Orders on Amazon Performance. It highlights key metrics such as total sales and Orders and Quantity, Promotion usage rate, and detailed sales breakdowns by demographics, Size, channels, Service Levele and product categories.
+An interactive dashboard analyzing the impact of Sales and Orders on Amazon Performance. It highlights key metrics such as total sales and Orders and Quantity, Promotion usage rate, and detailed sales breakdowns by demographics, Size, channels, Service Level and product categories.
 
 
 
