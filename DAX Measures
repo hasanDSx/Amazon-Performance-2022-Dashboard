@@ -1,10 +1,12 @@
-Total Orders = DISTINCTCOUNT('Dataset'[Order ID])
---
-Total Quantity = SUM('Dataset'[Qty])
---
-Total Sales = SUM('Dataset'[Amount])
---
-With Promotion = 
+📌 KPIs:
+
+1. Total Orders = DISTINCTCOUNT('Dataset'[Order ID])
+
+2. Total Quantity = SUM('Dataset'[Qty])
+
+3. Total Sales = SUM('Dataset'[Amount])
+
+4. With Promotion = 
 VAR WithPromotion = 
     CALCULATE(
         [Total Orders],
@@ -19,8 +21,9 @@ VAR AllOrders = [Total Orders]
 
 RETURN
     FORMAT(DIVIDE(WithPromotion, AllOrders, 0), "0.00%")
---
-OrderChanges = 
+
+📌 Time Analysis:
+5. OrderChanges = 
 VAR CurrentMonthSales = 
     CALCULATE(
         [Total Orders],
@@ -53,8 +56,8 @@ VAR PercentText = FORMAT((Change), "0.00%")
 
 RETURN
 "MoM Orders Change: " & PercentText & Arrow
---
-SalesChanges = 
+
+6. SalesChanges = 
 VAR CurrentMonthSales = 
     CALCULATE(
         [Total Sales],
@@ -87,7 +90,9 @@ VAR PercentText = FORMAT((Change), "0.00%")
 
 RETURN
 "MoM Sales Change: " & PercentText & Arrow
---
+
+
+📌 Filters:
 SelectedValue = SWITCH(
     SELECTEDVALUE('Orders_Sales'[Orders_Sales Order]),
     0, [Total Sales],
