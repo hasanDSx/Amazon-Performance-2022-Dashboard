@@ -1,0 +1,96 @@
+Total Orders = DISTINCTCOUNT('Dataset'[Order ID])
+--
+Total Quantity = SUM('Dataset'[Qty])
+--
+Total Sales = SUM('Dataset'[Amount])
+--
+With Promotion = 
+VAR WithPromotion = 
+    CALCULATE(
+        [Total Orders],
+        FILTER(
+            'Dataset',
+            NOT(ISBLANK('Dataset'[promotion-ids])) &&
+            'Dataset'[promotion-ids] <> "No_Promotion"
+        )
+    )
+
+VAR AllOrders = [Total Orders]
+
+RETURN
+    FORMAT(DIVIDE(WithPromotion, AllOrders, 0), "0.00%")
+--
+OrderChanges = 
+VAR CurrentMonthSales = 
+    CALCULATE(
+        [Total Orders],
+        FILTER(
+            ALL('Calendar_Table'),
+            MONTH('Calendar_Table'[Date]) = MONTH(TODAY())
+        )
+    )
+
+VAR PreviousMonthSales = 
+    CALCULATE(
+        [Total Orders],
+        FILTER(
+            ALL('Calendar_Table'),
+            MONTH('Calendar_Table'[Date]) = MONTH(TODAY()) - 1
+        )
+    )
+
+VAR Change = DIVIDE(CurrentMonthSales - PreviousMonthSales, PreviousMonthSales)
+
+VAR Arrow = 
+    SWITCH(
+        TRUE(),
+        Change > 0, " ▲",
+        Change < 0, " ▼",
+        ""
+    )
+
+VAR PercentText = FORMAT((Change), "0.00%")
+
+RETURN
+"MoM Orders Change: " & PercentText & Arrow
+--
+SalesChanges = 
+VAR CurrentMonthSales = 
+    CALCULATE(
+        [Total Sales],
+        FILTER(
+            ALL('Calendar_Table'),
+            MONTH('Calendar_Table'[Date]) = MONTH(TODAY())
+        )
+    )
+
+VAR PreviousMonthSales = 
+    CALCULATE(
+        [Total Sales],
+        FILTER(
+            ALL('Calendar_Table'),
+            MONTH('Calendar_Table'[Date]) = MONTH(TODAY()) - 1
+        )
+    )
+
+VAR Change = DIVIDE(CurrentMonthSales - PreviousMonthSales, PreviousMonthSales)
+
+VAR Arrow = 
+    SWITCH(
+        TRUE(),
+        Change > 0, " ▲",
+        Change < 0, " ▼",
+        ""
+    )
+
+VAR PercentText = FORMAT((Change), "0.00%")
+
+RETURN
+"MoM Sales Change: " & PercentText & Arrow
+--
+SelectedValue = SWITCH(
+    SELECTEDVALUE('Orders_Sales'[Orders_Sales Order]),
+    0, [Total Sales],
+    1, [Total Orders],
+    BLANK()
+)
