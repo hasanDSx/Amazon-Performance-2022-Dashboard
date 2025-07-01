@@ -24,25 +24,36 @@ RETURN
 
 📌 Time Analysis:
 5. OrderChanges = 
+VAR MaxDate = MAX('Calendar_Table'[Date])
+
 VAR CurrentMonthSales = 
     CALCULATE(
         [Total Orders],
         FILTER(
             ALL('Calendar_Table'),
-            MONTH('Calendar_Table'[Date]) = MONTH(TODAY())
+            MONTH('Calendar_Table'[Date]) = MONTH(MaxDate)
+                && YEAR('Calendar_Table'[Date]) = YEAR(MaxDate)
         )
     )
+
+VAR PreviousMonthDate = EOMONTH(MaxDate, -1)
 
 VAR PreviousMonthSales = 
     CALCULATE(
         [Total Orders],
         FILTER(
             ALL('Calendar_Table'),
-            MONTH('Calendar_Table'[Date]) = MONTH(TODAY()) - 1
+            MONTH('Calendar_Table'[Date]) = MONTH(PreviousMonthDate)
+                && YEAR('Calendar_Table'[Date]) = YEAR(PreviousMonthDate)
         )
     )
 
-VAR Change = DIVIDE(CurrentMonthSales - PreviousMonthSales, PreviousMonthSales)
+VAR Change = 
+    IF(
+        ISBLANK(PreviousMonthSales) || PreviousMonthSales = 0,
+        BLANK(),
+        DIVIDE(CurrentMonthSales - PreviousMonthSales, PreviousMonthSales)
+    )
 
 VAR Arrow = 
     SWITCH(
@@ -52,31 +63,48 @@ VAR Arrow =
         ""
     )
 
-VAR PercentText = FORMAT((Change), "0.00%")
+VAR PercentText = 
+    IF(
+        ISBLANK(Change),
+        "N/A",
+        FORMAT(Change, "0.00%")
+    )
 
 RETURN
 "MoM Orders Change: " & PercentText & Arrow
 
+
 6. SalesChanges = 
+VAR MaxDate = MAX('Calendar_Table'[Date])
+
 VAR CurrentMonthSales = 
     CALCULATE(
         [Total Sales],
         FILTER(
             ALL('Calendar_Table'),
-            MONTH('Calendar_Table'[Date]) = MONTH(TODAY())
+            MONTH('Calendar_Table'[Date]) = MONTH(MaxDate)
+                && YEAR('Calendar_Table'[Date]) = YEAR(MaxDate)
         )
     )
+
+VAR PreviousMonthDate = EOMONTH(MaxDate, -1)
 
 VAR PreviousMonthSales = 
     CALCULATE(
         [Total Sales],
         FILTER(
             ALL('Calendar_Table'),
-            MONTH('Calendar_Table'[Date]) = MONTH(TODAY()) - 1
+            MONTH('Calendar_Table'[Date]) = MONTH(PreviousMonthDate)
+                && YEAR('Calendar_Table'[Date]) = YEAR(PreviousMonthDate)
         )
     )
 
-VAR Change = DIVIDE(CurrentMonthSales - PreviousMonthSales, PreviousMonthSales)
+VAR Change = 
+    IF(
+        ISBLANK(PreviousMonthSales) || PreviousMonthSales = 0,
+        BLANK(),
+        DIVIDE(CurrentMonthSales - PreviousMonthSales, PreviousMonthSales)
+    )
 
 VAR Arrow = 
     SWITCH(
@@ -86,10 +114,16 @@ VAR Arrow =
         ""
     )
 
-VAR PercentText = FORMAT((Change), "0.00%")
+VAR PercentText = 
+    IF(
+        ISBLANK(Change),
+        "N/A",
+        FORMAT(Change, "0.00%")
+    )
 
 RETURN
-"MoM Sales Change: " & PercentText & Arrow
+"MoM Orders Change: " & PercentText & Arrow
+
 
 
 📌 Filters:
