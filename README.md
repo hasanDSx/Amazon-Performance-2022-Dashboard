@@ -1,12 +1,5 @@
-# Amazon Performance India 2022
-
-📌 Description:
-
-An interactive dashboard analyzing the impact of Sales and Orders on Amazon Performance. It highlights key metrics such as total sales and Orders and Quantity, Promotion usage rate, and detailed sales breakdowns by demographics, Size, channels, Service Level and product categories.
-
-
-
-📌 Analysis Steps:
+Analysis Steps:
+--
 
 •	Explored and understood the raw dataset to identify its structure and insights.
 
@@ -15,8 +8,8 @@ An interactive dashboard analyzing the impact of Sales and Orders on Amazon Perf
 •	Designed a dynamic Power BI dashboard for visualizing insights effectively.
 
 
-
-📌 Key Metrics:
+Key Metrics:
+--
 
 •	Total Sales: $78.59M
 
@@ -27,7 +20,8 @@ An interactive dashboard analyzing the impact of Sales and Orders on Amazon Perf
 •	Orders With Promotion: 61.03%
 
 
-📌 Key Insights:
+Key Insights:
+--
 
 🔹 Promotion Performance:
 
