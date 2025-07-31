@@ -37,7 +37,7 @@ Key Insights:
 
 📌 Services Level Results:
 
-- Customers prefer expedited services over standard Services
+  - Customers prefer expedited services over standard Services
 
 •	- Sales: Expedited (69.07%), Standard (30.93%).
 
@@ -51,7 +51,7 @@ Key Insights:
 
 📌 Courier Status:
 
-- Most orders were shipped on time.
+  - Most orders were shipped on time.
 
 •	- Sales: Shipped: (90.41%), Cancelled: (4.06%)
 
@@ -59,7 +59,7 @@ Key Insights:
 
 📌 Top 5 Ship State:
 
-- Maharashtra is the best in terms of sales and orders
+  - Maharashtra is the best in terms of sales and orders
 
 •	- Sales: Maharashtra ($13M), Tamil Nadu: ($7M)
 
@@ -67,7 +67,7 @@ Key Insights:
 
 📌 Fulfilment:
 
-- Customers prefer to get the deal directly from Amazon.
+  - Customers prefer to get the deal directly from Amazon.
 
 •	- Sales: Amazon (69.12%), Merchant: (30.88%)
 
