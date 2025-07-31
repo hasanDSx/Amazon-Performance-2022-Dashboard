@@ -11,13 +11,13 @@ Analysis Steps:
 Key Metrics:
 --
 
-•	Total Sales: $78.59M
+📌	Total Sales: $78.59M
 
-•	Total Orders: 120K
+📌	Total Orders: 120K
 
-•	Total Quantity: 117K
+📌	Total Quantity: 117K
 
-•	Orders With Promotion: 61.03%
+📌	Orders With Promotion: 61.03%
 
 
 Key Insights:
